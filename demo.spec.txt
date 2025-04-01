@@ -1,0 +1,24 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://demo.guru99.com/test/newtours/');
+  await page.locator('input[name="userName"]').click();
+  await page.locator('input[name="userName"]').fill('admin');
+  await page.locator('input[name="password"]').click();
+  await page.locator('input[name="password"]').fill('admin');
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('link', { name: 'Flights' }).click();
+  await page.getByRole('radio').nth(1).check();
+  await page.locator('select[name="passCount"]').selectOption('2');
+  await page.locator('select[name="fromPort"]').selectOption('Frankfurt');
+  await page.locator('select[name="fromMonth"]').selectOption('10');
+  await page.locator('select[name="fromDay"]').selectOption('20');
+  await page.locator('select[name="toPort"]').selectOption('Sydney');
+  await page.locator('select[name="toMonth"]').selectOption('11');
+  await page.locator('select[name="toDay"]').selectOption('19');
+  await page.getByRole('radio').nth(3).check();
+  await page.locator('select[name="airline"]').selectOption('Blue Skies Airlines');
+  await page.getByRole('radio').first().check();
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('cell', { name: 'SIGN-ON REGISTER SUPPORT CONTACT After flight finder - No Seats Avaialble' }).getByRole('link').nth(4).click();
+});
